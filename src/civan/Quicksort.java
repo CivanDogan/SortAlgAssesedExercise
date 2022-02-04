@@ -55,6 +55,35 @@ public class Quicksort {
             sortWithMedianOf3(A, q + 1, r);
         }
     }
+    public static int[] threeWayPartitioning(int[] A, int p, int r) {
+        int x = A[r];
+        int high = r ;
+        int low = p;
+        int mid = p;
+
+        for (int j = p; j < r; j++) {
+            if (high < mid){
+                break;
+            }
+            if (A[j] < x) {
+                swap(A, low, j);
+                low++;
+                mid++;
+                continue;
+            }
+            if (A[j] == x) {
+                mid++;
+                continue;
+            }
+            if (A[j] > x) {
+                swap(A,high,j);
+                high--;
+                j--;
+                continue;
+            }
+        }
+        return new int[] {mid,high};
+    }
 
 
     public static int partition(int[] A, int p, int r) {
