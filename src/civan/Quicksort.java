@@ -46,6 +46,14 @@ public class Quicksort {
 
         }
     }
+    public static void sortWith3WayPart(int[] A, int p, int r) {
+        if (p < r) {
+            int[] q = threeWayPartitioning(A, p, r);
+            sortWith3WayPart(A, p, q[0] - 1);
+            sortWith3WayPart(A, q[1] + 1, r);
+
+        }
+    }
 
     public static void sortWithMedianOf3(int[] A, int p, int r){
         if (p < r) {
@@ -82,7 +90,7 @@ public class Quicksort {
                 continue;
             }
         }
-        return new int[] {mid,high};
+        return new int[] {low,high};
     }
 
 
